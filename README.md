@@ -17,17 +17,17 @@
     DB_PASSWORD=1234
 
 эндпоинты: 
-    [GET] http://127.0.0.1:8876/catalog/{paginate} - вывод каталога, в параметре указать сколько 
+    [GET] http://127.0.0.1:8876/api/catalog/{paginate} - вывод каталога, в параметре указать сколько 
     количество предметов для пагинации, если ничего не указать, выведутся все
-    [POST] http://127.0.0.1:8876/catalog - выводит предмет с фильтрацией
+    [POST] http://127.0.0.1:8876/api/catalog - выводит предмет с фильтрацией
     заголовки - type(price, property),
                 если type = price:
                     priceStart (integer)
                     priceEnd (integer)
                 если type = property
                     propertyId (integet) от 1 до 200 (в сидере 200 характеристик)
-    [GET] http://127.0.0.1:8876/feedback - выводит все отзывы 
-    [POST] http://127.0.0.1:8876/feedback - создание отзыва
+    [GET] http://127.0.0.1:8876/api/feedback - выводит все отзывы 
+    [POST] http://127.0.0.1:8876/api/feedback - создание отзыва
     заголовки - header (string)
                 body (string)
                 score (integer) от 1 до 5
