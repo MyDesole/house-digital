@@ -5,20 +5,29 @@
     docker-compose up -d
 после поднятия контрейнера:
     docker-compose exec app bash
-    cd ../var/www
+    composer install
     php artisan migrate --seed
+далее создаем в коренной папке файл .env
+туда вставляем:
+    DB_CONNECTION=pgsql
+    DB_HOST=db
+    DB_PORT=5432
+    DB_DATABASE=test
+    DB_USERNAME=user
+    DB_PASSWORD=1234
+
 эндпоинты: 
-    [GET] /catalog/{paginate} - вывод каталога, в параметре указать сколько 
+    [GET] http://127.0.0.1:8876/catalog/{paginate} - вывод каталога, в параметре указать сколько 
     количество предметов для пагинации, если ничего не указать, выведутся все
-    [POST] /catalog - выводит предмет с фильтрацией
+    [POST] http://127.0.0.1:8876/catalog - выводит предмет с фильтрацией
     заголовки - type(price, property),
                 если type = price:
                     priceStart (integer)
                     priceEnd (integer)
                 если type = property
                     propertyId (integet) от 1 до 200 (в сидере 200 характеристик)
-    [GET] /feedback - выводит все отзывы 
-    [POST] /feedback - создание отзыва
+    [GET] http://127.0.0.1:8876/feedback - выводит все отзывы 
+    [POST] http://127.0.0.1:8876/feedback - создание отзыва
     заголовки - header (string)
                 body (string)
                 score (integer) от 1 до 5
